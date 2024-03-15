@@ -33,7 +33,6 @@ public class Student {
     }
 
     // define getters/setters
-
     public int getId() {
         return id;
     }
@@ -67,7 +66,6 @@ public class Student {
     }
 
     // define toString() method
-
     @Override
     public String toString() {
         return "Student{" +

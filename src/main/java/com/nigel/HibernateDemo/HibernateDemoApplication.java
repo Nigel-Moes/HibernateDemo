@@ -24,7 +24,21 @@ public class HibernateDemoApplication {
 				// readStudent(studentDAO);
 				// queryForStudents(studentDAO);
 				// queryForStudentsByLastName(studentDAO);
-				updateStudent(studentDAO);
+				// updateStudent(studentDAO);
+				// deleteStudent(studentDAO);
+				deleteAll(studentDAO);
+	}
+
+	private void deleteAll(StudentDAO studentDAO) {
+		System.out.println("Deleting all students");
+		int numRowsDeleted = studentDAO.deleteAll();
+		System.out.println("Deleted row count: " + numRowsDeleted);
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		int studentId = 3;
+		System.out.println("Deleting student id: " + studentId);
+		studentDAO.delete(studentId);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
@@ -43,6 +57,7 @@ public class HibernateDemoApplication {
 
 		// display the updated student
 		System.out.println("Updated student: " + myStudent);
+
 	}
 
 	private void queryForStudentsByLastName(StudentDAO studentDAO) {
@@ -54,6 +69,7 @@ public class HibernateDemoApplication {
 		for (Student tempStudent : theStudents){
 			System.out.println(tempStudent);
 		}
+
 	}
 
 	private void queryForStudents(StudentDAO studentDAO) {
@@ -64,7 +80,9 @@ public class HibernateDemoApplication {
 		// display list of students
 		for (Student tempStudent : theStudents) {
 			System.out.println(tempStudent);
+
 		}
+
 	}
 
 	private void readStudent(StudentDAO studentDAO) {
@@ -87,9 +105,11 @@ public class HibernateDemoApplication {
 
 		// display student
 		System.out.println("Found the student: " + myStudent);
+
 	}
 
 	private void createMultipleStudents(StudentDAO studentDAO) {
+
 		// create multiple students
 		System.out.println("Creating 3 student objects...");
 		Student tempStudent1 = new Student("Maria", "Arias", "maria@arias.com");
@@ -101,6 +121,7 @@ public class HibernateDemoApplication {
 		studentDAO.save(tempStudent1);
 		studentDAO.save(tempStudent2);
 		studentDAO.save(tempStudent3);
+
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
@@ -115,5 +136,7 @@ public class HibernateDemoApplication {
 
 		// display id of the saved student
 		System.out.println("Saved student. Generated id: " + tempStudent.getId());
+
 	}
+
 }

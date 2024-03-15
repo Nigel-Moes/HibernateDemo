@@ -28,11 +28,13 @@ public class StudentDAOImpl implements StudentDAO {
         entityManager.persist(theStudent);
     }
 
+    // implement findById method
     @Override
     public Student findById(Integer id) {
         return entityManager.find(Student.class, id);
     }
 
+    // implement findAll method
     @Override
     public List<Student> findAll() {
 
@@ -44,6 +46,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     }
 
+    // implement findByLastName method
     @Override
     public List<Student> findByLastName(String theLastName) {
 
@@ -59,10 +62,31 @@ public class StudentDAOImpl implements StudentDAO {
 
     }
 
+    // implement update method
     @Override
     @Transactional
     public void update(Student theStudent) {
         entityManager.merge(theStudent);
     }
 
+    // implement delete method
+    @Override
+    @Transactional
+    public void delete(Integer id) {
+
+        // retrieve teh student
+        Student theStudent = entityManager.find(Student.class, id);
+
+        // delete the student
+        entityManager.remove(theStudent);
+
+    }
+
+    // implement deleteAll method
+    @Override
+    @Transactional
+    public int deleteAll() {
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+        return numRowsDeleted;
+    }
 }
